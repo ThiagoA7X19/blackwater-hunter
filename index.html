@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>animações</title>
+
+<style>
+
+body{
+    background-image: url("WhatsApp Image 2026-05-25 at 10.50.19.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+
+    /* centraliza tudo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem img{
+    width: 300px; /* tamanho da logo */
+    height: auto;
+}
+.game-button {
+    background: linear-gradient(to bottom, #3cff00, #1f8f00);
+    border: 4px solid #145c00;
+    border-radius: 12px;
+    color: white;
+    font-size: 24px;
+    font-family: 'Press Start 2P', cursive;
+    padding: 15px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    /* efeito pixel/shadow */
+    box-shadow:
+        0 6px #0d3d00,
+        0 0 15px rgba(60,255,0,0.6);
+
+    transition: all 0.1s ease-in-out;
+}
+
+/* Hover */
+.game-button:hover {
+    background: linear-gradient(to bottom, #52ff1a, #28b300);
+    transform: scale(1.05);
+}
+
+/* Clique */
+.game-button:active {
+    transform: translateY(4px);
+    box-shadow:
+        0 2px #0d3d00,
+        0 0 8px rgba(60,255,0,0.5);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="imagem">
+    <img src="imagemdacapa.png">
+</div>
+
+<div class="game-button" style="position: absolute; bottom: 50px;">
+  <button onclick="window.location.href='pagina2.html'" style="border: none; background: none; cursor: pointer;">JOGAR</button>  
+</div>
+</body>
+
+</html>
