@@ -1,5 +1,4 @@
 var canvas = document.querySelector('canvas');
-var c 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 canvas.style.backgroundColor = "transparent";
@@ -9,42 +8,37 @@ var x = 200;
 var y = 200;
 var dx = 10;
 var dy = 10;
+var raio = 10;
 
-var animationId;
-var animado = false;
+var gravidade = 0.5;
 
 function animate() {
    animationId = requestAnimationFrame(animate);
-    c.clearRect(0, 0, innerWidth, innerHeight );
+   c.clearRect(0, 0, canvas.width, canvas.height);
+   c.fillStyle = 'blue';
+   c.fillRect(400, canvas.height - 50, 300, 50);
+   
+   
+    c.beginPath();
 
-    c.fillStyle = "#c00d0dbb";
-    c.fillRect(x, 100, 100, 100, 100);
-    c.fillStyle = "#0d0dc0bb";
-    c.fillRect(100, y, 100, 100, 100);
-
-    if ((x + 100) > innerWidth) {
-        dx = -dx;
-    }
-     if ((x) < 0) {
-        dx = -dx;
-    }
-    if ((y + 100) > innerHeight) {
-        dy = -dy;
-    }
-    if ((y) < 0) {
-        dy = -dy;
-    }
-    x += dx;
+    c.arc(x, y, raio, 0, Math.PI * 2);
+    c.fillStyle = 'red';
+    c.fill();
+    dy += gravidade;
+     x += dx;
     y += dy;
-}
-function comecar() {
-    if (!animado) {
-        animate();
-        animado = true;
+
+    if ((x + raio) > canvas.width || x - raio < 0) {
+        dx = -dx;
     }
+
+    if ((y + raio) > canvas.height) {
+        y = canvas.height - raio;
+        dy = -dy * 0.8; // Simula a perda de energia na colisão
+    }
+
+    
+    
 }
-function parar() {
-    cancelAnimationFrame(animationId);
-    animado = false;
-}
+
 animate();
