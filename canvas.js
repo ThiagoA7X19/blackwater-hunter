@@ -4,11 +4,15 @@ canvas.height = window.innerHeight;
 canvas.style.backgroundColor = "transparent";
 
 var c = canvas.getContext('2d');
-var x = 200;
+var x = 100;
 var y = 200;
-var dx = 10;
-var dy = 10;
+var dx = 20;
+var dy = -10;
 var raio = 10;
+var chaoX = 0;
+var chaoY = canvas.height - 50;
+var chaoLargura = canvas.width;
+var chaoAltura = 50;
 
 var gravidade = 0.5;
 
@@ -16,7 +20,7 @@ function animate() {
    animationId = requestAnimationFrame(animate);
    c.clearRect(0, 0, canvas.width, canvas.height);
    c.fillStyle = 'blue';
-   c.fillRect(400, canvas.height - 50, 300, 50);
+   c.fillRect(0, canvas.height - 50, canvas.width, 50);
    
    
     c.beginPath();
@@ -32,12 +36,18 @@ function animate() {
         dx = -dx;
     }
 
-    if ((y + raio) > canvas.height) {
-        y = canvas.height - raio;
-        dy = -dy * 0.8; // Simula a perda de energia na colisão
-    }
+    if (
+        y + raio > chaoY &&
+        x + raio > chaoX &&
+        x - raio < chaoX + chaoLargura
+    ) {
 
-    
+        y = chaoY - raio;
+
+        dy = 0;
+        dx = -1;
+    }
+ 
     
 }
 
