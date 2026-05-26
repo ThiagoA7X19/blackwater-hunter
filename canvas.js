@@ -1,7 +1,8 @@
 var canvas = document.querySelector('canvas');
+var c 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-canvas.style.backgroundColor = "Black";
+canvas.style.backgroundColor = "transparent";
 
 var c = canvas.getContext('2d');
 var x = 200;
