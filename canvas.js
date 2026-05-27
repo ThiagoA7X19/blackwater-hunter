@@ -13,6 +13,10 @@ var chaoX = 0;
 var chaoY = canvas.height - 50;
 var chaoLargura = canvas.width;
 var chaoAltura = 50;
+var peixeX = 100;
+var velocidadePeixe = 5;
+var peixey = 100;
+var velocidadePeixeY = 3;
 
 var gravidade = 0.5;
 
@@ -21,7 +25,18 @@ function animate() {
    c.clearRect(0, 0, canvas.width, canvas.height);
    c.fillStyle = 'blue';
    c.fillRect(0, canvas.height - 50, canvas.width, 50);
-   
+   c.fillStyle = 'red';
+   c.fillRect(peixeX, canvas.height - 55, 30, 30);
+   peixeX += velocidadePeixe;
+   c.fillStyle = 'green';
+   c.fillRect(peixey, canvas.height - 55, 30, 30);
+    peixey += velocidadePeixeY;
+    if (peixeX + 30 > canvas.width || peixeX < 0) {
+        velocidadePeixe = -velocidadePeixe;
+    }
+  if (peixey + 30 > canvas.width || peixey < 0) {
+        velocidadePeixeY = -velocidadePeixeY;
+    }
    
     c.beginPath();
 
