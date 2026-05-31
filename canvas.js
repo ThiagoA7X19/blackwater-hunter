@@ -94,14 +94,14 @@ function animate() {
 } else {
     colidiu = false;
 }
-if (ganhou && x < 20) {
+if (ganhou && x < 95) {
 
     c.font = "50px Arial";
     c.fillStyle = "yellow";
    venceu();
 
 } 
-if (x < 20 && !ganhou) {
+if (x < 95 && !ganhou) {
         perdeu();
     }
 
