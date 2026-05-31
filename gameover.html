@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game-Over</title>
+    <style>  
+      body {
+            background-image: url("imagens/tela_game_over.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+    display: flex;
+     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.gameover {
+    color: red;
+    font-size: 100px;
+    font-family: Impact, sans-serif;
+    text-shadow:
+        0 0 10px red,
+        0 0 20px red,
+        0 0 40px darkred;
+        margin-bottom: 50px;
+}    .game-button {
+    background: linear-gradient(to bottom, #3cff00, #1f8f00);
+    border: 4px solid #145c00;
+    border-radius: 12px;
+    color: white;
+    font-size: 24px;
+    font-family: 'Press Start 2P', cursive;
+    padding: 15px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    /* efeito pixel/shadow */
+    box-shadow:
+        0 6px #0d3d00,
+        0 0 15px rgba(60,255,0,0.6);
+
+    transition: all 0.1s ease-in-out;
+}
+.game-button { background: linear-gradient(to bottom, #3cff00, #1f8f00);
+    border: 4px solid #145c00;
+    border-radius: 12px;
+    color: white;
+    font-size: 24px;
+    font-family: 'Press Start 2P', cursive;
+    padding: 15px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    /* efeito pixel/shadow */
+    box-shadow:
+        0 6px #0d3d00,
+        0 0 15px rgba(60,255,0,0.6);
+
+    transition: all 0.1s ease-in-out;
+}
+
+
+/* Hover */
+.game-button:hover {
+    background: linear-gradient(to bottom, #52ff1a, #28b300);
+    transform: scale(1.05);
+}
+
+/* Clique */
+.game-button:active {
+    transform: translateY(4px);
+    box-shadow:
+        0 2px #0d3d00,
+        0 0 8px rgba(60,255,0,0.5);
+}  
+        </style>
+</head>
+<body> 
+    <div class="gameover">GAME OVER</div>
+    <button onclick="location.href='pagina2.html'" class="game-button">Jogar Novamente</button>
+</body>
+</html>
