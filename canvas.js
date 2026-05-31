@@ -14,9 +14,9 @@ var chaoY = canvas.height - 50;
 var chaoLargura = canvas.width;
 var chaoAltura = 50;
 var peixeX = 100;
-var velocidadePeixe = 2;
+var velocidadePeixe = 10;
 var peixey = 100;
-var velocidadePeixeY = 3;
+var velocidadePeixeY = 15;
 var gravidade = 0.5;
 var colidiu = false;
 var pegou = false;
@@ -48,19 +48,28 @@ function animate() {
    c.fillRect(0, canvas.height - 50, canvas.width, 50);
 
    c.fillStyle = 'transparent';
-   c.fillRect(peixeX, canvas.height - 55, 30, 30);
+   c.fillRect(peixeX, canvas.height - 55, 15, 15);
 
    c.fillStyle = 'transparent';
-   c.fillRect(peixey, canvas.height - 55, 30, 30);
+   c.fillRect(peixey, canvas.height - 55, 15, 15);
   
 
     if (peixeX + 30 > canvas.width || peixeX < 0) {
         velocidadePeixe = -velocidadePeixe;
     }
+    if (Math.random() < 0.01) {
+    velocidadePeixe = -velocidadePeixe;
+}
 
+
+    
   if (peixey + 30 > canvas.width || peixey < 0) {
         velocidadePeixeY = -velocidadePeixeY;
     }
+    if (Math.random() < 0.01) {
+    velocidadePeixeY = -velocidadePeixeY;
+}
+
    
     c.beginPath();
 
@@ -84,11 +93,16 @@ function animate() {
         dy = 0;
         dx = -1;
     }
-    if (
-    x + raio > peixeX &&
-    x - raio < peixeX + 30 &&
-    y + raio > canvas.height - 55 &&
-    y - raio < canvas.height - 25
+   if (
+    (
+        x + raio > peixeX &&
+        x - raio < peixeX + 30
+    )
+    ||
+    (
+        x + raio > peixey &&
+        x - raio < peixey + 30
+    )
 ) {
     colidiu = true;
 } else {
