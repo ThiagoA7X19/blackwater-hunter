@@ -14,17 +14,20 @@ var chaoY = canvas.height - 50;
 var chaoLargura = canvas.width;
 var chaoAltura = 50;
 var peixeX = 100;
-var velocidadePeixe = 5;
+var velocidadePeixe = 2;
 var peixey = 100;
 var velocidadePeixeY = 3;
 var gravidade = 0.5;
 var colidiu = false;
 var pegou = false;
+var tempo = 0;
 var imgTraira = new Image();
+var ganhou = false;
+
 imgTraira.src = "imagens/trairadojogo.png";
 
 function peixe(x, y) {
-    c.drawImage(imgTraira, x, y, 100, 60);
+    c.drawImage(imgTraira, x, y, 800, 500);
 }
 
 function perdeu() {
@@ -43,14 +46,13 @@ function animate() {
    c.fillStyle = 'blue';
 
    c.fillRect(0, canvas.height - 50, canvas.width, 50);
-   c.fillStyle = 'red';
 
+   c.fillStyle = 'transparent';
    c.fillRect(peixeX, canvas.height - 55, 30, 30);
-   peixeX += velocidadePeixe;
-   c.fillStyle = 'red';
 
+   c.fillStyle = 'transparent';
    c.fillRect(peixey, canvas.height - 55, 30, 30);
-    peixey += velocidadePeixeY;
+  
 
     if (peixeX + 30 > canvas.width || peixeX < 0) {
         velocidadePeixe = -velocidadePeixe;
@@ -65,9 +67,7 @@ function animate() {
     c.arc(x, y, raio, 0, Math.PI * 2);
     c.fillStyle = 'red';
     c.fill();
-    dy += gravidade;
-     x += dx;
-    y += dy;
+
 
     if ((x + raio) > canvas.width || x - raio < 0) {
         dx = -dx;
@@ -94,32 +94,53 @@ function animate() {
 } else {
     colidiu = false;
 }
-if (pegou && x < 20) {
+if (ganhou && x < 20) {
 
     c.font = "50px Arial";
     c.fillStyle = "yellow";
    venceu();
 
 } 
-if (x < 20 && !pegou) {
+if (x < 20 && !ganhou) {
         perdeu();
     }
+
    if (pegou) {
-peixe(300, 100);
-  c.fillText("VOCÊ PEGOU O PEIXE!", 200, 200);
+    c.font = "30px Bangers";
+    c.fillStyle = "yellow";
+    c.fillText("Você pegou a traíra!", canvas.width / 2 - 150, canvas.height / 2);
+peixe(
+        canvas.width / 2 - 200,
+        canvas.height / 2 - 150
+    );
+
+    if (Date.now() - tempo > 1000) {
+        pegou = false;
+    }
+}
+
+if (!pegou) {
+     peixeX += velocidadePeixe;
+    peixey += velocidadePeixeY;
+
+    dy += gravidade;
+    x += dx;
+    y += dy;
+
 }
 
 }
+
+
 
 animate();
 canvas.addEventListener("click", function(event){
 
     if (colidiu) {
         pegou = true;
-      
-       
-
-        
+        ganhou = true;
+        tempo = Date.now();
+              
     }
 
 });
